@@ -1,0 +1,44 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion 29
+
+    defaultConfig {
+        minSdkVersion 14
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+    }
+
+//    productFlavors {
+//        landscape{
+//            buildConfigField "Integer", "SCREEN_ORIENTATION", "0"
+//        }
+//
+//        portrait{
+//            buildConfigField "Integer", "SCREEN_ORIENTATION", "1"
+//        }
+//    }
+
+    buildTypes {
+        debug {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    
+    dataBinding {
+        enabled true
+    }
+}
+
+dependencies {
+    api fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'android.arch.lifecycle:common-java8:1.1.1'
+    implementation files('libs/nineoldandroids-2.4.0.jar')
+}
